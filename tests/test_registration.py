@@ -44,11 +44,19 @@ def test_add_existing_user(setup_database, connection):
     result = add_user('ert', 'ert@mail.ru', 'pass123')
 
     assert result == False
+
+
+def test_authenticate_wrong_password(setup_database, connection):
+    """Тест аутентификации пользователя с неправильным паролем."""
+    add_user('tyg', 'tyg@mail.ru', 'pass23')
+
+    result = authenticate_user('tyg', 'wpass23')
+
+    assert result == False
 # Возможные варианты тестов:
 """
 
 Тест успешной аутентификации пользователя.
 Тест аутентификации несуществующего пользователя.
-Тест аутентификации пользователя с неправильным паролем.
 Тест отображения списка пользователей.
 """
