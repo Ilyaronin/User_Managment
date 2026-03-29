@@ -53,6 +53,12 @@ def test_authenticate_wrong_password(setup_database, connection):
     result = authenticate_user('tyg', 'wpass23')
 
     assert result == False
+
+def test_authenticate_noneexistent_user(setup_database, connection):
+    """Тест аутентификации несуществующего пользователя."""
+
+    result = authenticate_user("rtyey", "pass546")
+    assert result == False
 # Возможные варианты тестов:
 """
 
